@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../components/Home.vue'
+import Directory from '../components/Directory.vue'
 
 
 /**
@@ -8,6 +8,6 @@ import Home from '../components/Home.vue'
 export const router = createRouter({
     history: createWebHistory(),
     routes: [
-        { path: '/', name: 'Home', component: Home, meta: { layout: 'modal' }  },
+        { path: '/:uuid', name: 'directory', component: Directory, meta: { layout: 'modal' }  },
     ]
 })

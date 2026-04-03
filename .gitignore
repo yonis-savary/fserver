@@ -6,3 +6,4 @@ Storage
 composer.lock
 
 Docker/app_storage
+Docker/mysql_data

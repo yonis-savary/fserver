@@ -1,4 +1,30 @@
 services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "${DATABASE_PASSWORD:-root}"
+      MYSQL_DATABASE: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - ../mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ../redis_data:/data
+    command: ["redis-server", "--save", "20", "1", "--loglevel", "warning"]
+
   backend: &backend
     build:
       context: ../..
@@ -15,6 +41,9 @@ services:
       - ../../App:/var/www/App
       - ../../Public:/var/www/Public
       - ../app_storage:/var/www/Storage
+    depends_on:
+      - redis
+      - mysql
 
   frontend:
     build:
