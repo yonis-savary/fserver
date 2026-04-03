@@ -1,3 +1,5 @@
-Docker/Prod/app_storage
+Docker/app_storage
+Docker/redis_data
+Docker/mysql_data
 Frontend/.env
 Storage
