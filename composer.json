@@ -1,0 +1,13 @@
+{
+    "name": "your-name/repo-name",
+    "type": "project",
+    "require": {
+        "yonis-savary/cube": "dev-main"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/"
+        }
+    },
+    "minimum-stability": "dev"
+}

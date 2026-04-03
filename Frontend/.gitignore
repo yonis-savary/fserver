@@ -1,0 +1,5 @@
+node_modules
+dist
+
+# Uncomment this line in your project
+package-lock.json

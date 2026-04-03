@@ -1,0 +1,32 @@
+services:
+  backend: &backend
+    build:
+      context: ../..
+      dockerfile: Docker/Dev/dockerfile.backend
+      args:
+        UID: ${UID}
+        GID: ${GID}
+    user: www-data
+    env_file:
+      - ../../.env
+    ports:
+      - "${BACKEND_PORT:-8000}:80"
+    volumes:
+      - ../../App:/var/www/App
+      - ../../Public:/var/www/Public
+      - ../app_storage:/var/www/Storage
+
+  frontend:
+    build:
+      context: ../..
+      dockerfile: Docker/Dev/dockerfile.frontend
+      args:
+        UID: ${UID}
+        GID: ${GID}
+    user: node
+    env_file:
+      - ../../.env
+    ports:
+      - "${FRONTEND_PORT:-8001}:5173"
+    volumes:
+      - ../../Frontend/src:/app/src:ro
