@@ -1,6 +1,8 @@
 import { router } from "../router";
 
-const API_BASE_URL = ( import.meta.env.VITE_BACKEND_URL ?? '/').replace(/\/$/, '');
+const API_BASE_URL = ( import.meta.env.VITE_BACKEND_URL ?? '/api').replace(/\/$/, '');
+
+console.log("API Used ", API_BASE_URL);
 
 export function apiUrl(url: string): string {
     return API_BASE_URL + '/' + url.replace(/^\//, '')

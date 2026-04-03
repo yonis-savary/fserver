@@ -6,7 +6,10 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig(({ mode }) => {
   // Charge les variables d'env en fonction du mode (development, production, etc.)
-  const env = loadEnv(mode, process.cwd(), '')
+  const env = {
+    ...process.env,
+    ...loadEnv(mode, process.cwd(), '')
+  };
 
   return {
     server: {
