@@ -2,10 +2,10 @@
 export
 
 start-dev:
-	@docker compose --env-file ./.env -f Docker/Dev/compose.yml build --no-cache
+	@docker compose --env-file ./.env -f Docker/Dev/compose.yml build
 	@docker compose --env-file ./.env -f Docker/Dev/compose.yml up -d
 start-prod:
-	@docker compose --env-file ./.env -f Docker/Prod/compose.yml build --no-cache
+	@docker compose --env-file ./.env -f Docker/Prod/compose.yml build
 	@docker compose --env-file ./.env -f Docker/Prod/compose.yml up -d
 
 dev:
