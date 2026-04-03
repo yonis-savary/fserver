@@ -86,13 +86,15 @@ const reloadDirectory = async () => {
         response = await apiFetch(`/${uuid}`, requestParams);
     }
     catch (error) {
-        if (error.message === 'unauthorized') {
-            needsPassword.value = true;
-            password.value = null;
-            return;
+        if (error instanceof Error) {
+            if (error.message === 'unauthorized') {
+                needsPassword.value = true;
+                password.value = null;
+                return;
+            }
+            console.error(error);
+            console.info(error);
         }
-        console.error(error);
-        console.info(error);
     }
     finally {
         loading.value = false;
